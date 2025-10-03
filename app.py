@@ -159,105 +159,105 @@ with tab3:
 
 import folium
 from streamlit_folium import st_folium
+with tab4:
+    st.title("☄️ Hypothetical Asteroid Impact Simulation")
 
-st.title("☄️ Hypothetical Asteroid Impact Simulation")
-
-# --- Stage slider ---
-stage = st.slider(
-    "🛰️ Choose Impact Stage",
-    1, 4, 1,
-    format="%d"
-)
-
-stages = {
-    1: "Approach Phase: Asteroid approaching Earth at 20 km/s.",
-    2: "Atmosphere Entry: Glowing fireball visible in the sky.",
-    3: "Impact: Explosion equivalent to 1.2M megatons TNT.",
-    4: "Aftermath: Crater formed, widespread fires, earthquake."
-}
-
-st.info(stages[stage])
-
-# --- Map first ---
-marker_styles = {
-    1: {"color": "blue", "size": 10},
-    2: {"color": "orange", "size": 15},
-    3: {"color": "red", "size": 25},
-    4: {"color": "black", "size": 20},
-}
-
-impact_location = pd.DataFrame({
-    'lat': [24.9],
-    'lon': [67.0],
-    'name': [f"Stage {stage}: {stages[stage]}"]
-})
-
-fig = px.scatter_mapbox(
-    impact_location,
-    lat="lat",
-    lon="lon",
-    hover_name="name",
-    zoom=5,
-    height=400
-)
-fig.update_traces(
-    marker=dict(
-        color=marker_styles[stage]["color"],
-        size=marker_styles[stage]["size"]
+    # --- Stage slider ---
+    stage = st.slider(
+        "🛰️ Choose Impact Stage",
+        1, 4, 1,
+        format="%d"
     )
-)
-fig.update_layout(
-    mapbox_style="open-street-map",
-    margin={"r":0, "t":0, "l":0, "b":0}
-)
-st.plotly_chart(fig, use_container_width=True)
 
-st.markdown("---")
+    stages = {
+        1: "Approach Phase: Asteroid approaching Earth at 20 km/s.",
+        2: "Atmosphere Entry: Glowing fireball visible in the sky.",
+        3: "Impact: Explosion equivalent to 1.2M megatons TNT.",
+        4: "Aftermath: Crater formed, widespread fires, earthquake."
+    }
 
-# --- Stage-specific content ---
-if stage == 1:
-    st.subheader("🔹 General Info")
-    st.markdown("""
-        - **Name:** Impactor-2025 (imaginary asteroid)  
-        - **Type:** Stony asteroid (ordinary chondrite)  
-        - **Density:** ~3,000 kg/m³  
-        - **Shape:** Roughly spherical  
-    """)
+    st.info(stages[stage])
 
-elif stage == 2:
-    st.subheader("🔹 Physical Properties")
-    st.markdown("""
-        - **Diameter:** 250 m  
-        - **Radius:** 125 m  
-        - **Volume:** ≈ 8.18 × 10⁶ m³  
-        - **Mass:** ≈ 2.45 × 10¹⁰ kg  
-    """)
+    # --- Map first ---
+    marker_styles = {
+        1: {"color": "blue", "size": 10},
+        2: {"color": "orange", "size": 15},
+        3: {"color": "red", "size": 25},
+        4: {"color": "black", "size": 20},
+    }
 
-elif stage == 3:
-    st.subheader("🔹 Impact Energy & Effects")
+    impact_location = pd.DataFrame({
+        'lat': [24.9],
+        'lon': [67.0],
+        'name': [f"Stage {stage}: {stages[stage]}"]
+    })
 
-    st.markdown("""
-    <div style="font-size:16px; line-height:1.6;">
-    <b>Kinetic energy:</b> 4.9 × 10¹⁸ joules  
-    <br><i>(≈ 1.2 million megatons of TNT)</i>  
-    <br><b>Crater diameter:</b> ~3.5 km  
-    <br><b>Crater depth:</b> ~0.7 km  
-    <br><b>Blast wave:</b> Severe destruction up to 50 km radius  
-    <br><b>Thermal radiation:</b> Fires up to 80 km away  
-    <br><b>Earthquake equivalent:</b> Magnitude ~7.0  
-    </div>
-    """, unsafe_allow_html=True)
+    fig = px.scatter_mapbox(
+        impact_location,
+        lat="lat",
+        lon="lon",
+        hover_name="name",
+        zoom=5,
+        height=400
+    )
+    fig.update_traces(
+        marker=dict(
+            color=marker_styles[stage]["color"],
+            size=marker_styles[stage]["size"]
+        )
+    )
+    fig.update_layout(
+        mapbox_style="open-street-map",
+        margin={"r":0, "t":0, "l":0, "b":0}
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown("---")
+
+    # --- Stage-specific content ---
+    if stage == 1:
+        st.subheader("🔹 General Info")
+        st.markdown("""
+            - **Name:** Impactor-2025 (imaginary asteroid)  
+            - **Type:** Stony asteroid (ordinary chondrite)  
+            - **Density:** ~3,000 kg/m³  
+            - **Shape:** Roughly spherical  
+        """)
+
+    elif stage == 2:
+        st.subheader("🔹 Physical Properties")
+        st.markdown("""
+            - **Diameter:** 250 m  
+            - **Radius:** 125 m  
+            - **Volume:** ≈ 8.18 × 10⁶ m³  
+            - **Mass:** ≈ 2.45 × 10¹⁰ kg  
+        """)
+
+    elif stage == 3:
+        st.subheader("🔹 Impact Energy & Effects")
+
+        st.markdown("""
+        <div style="font-size:16px; line-height:1.6;">
+        <b>Kinetic energy:</b> 4.9 × 10¹⁸ joules  
+        <br><i>(≈ 1.2 million megatons of TNT)</i>  
+        <br><b>Crater diameter:</b> ~3.5 km  
+        <br><b>Crater depth:</b> ~0.7 km  
+        <br><b>Blast wave:</b> Severe destruction up to 50 km radius  
+        <br><b>Thermal radiation:</b> Fires up to 80 km away  
+        <br><b>Earthquake equivalent:</b> Magnitude ~7.0  
+        </div>
+        """, unsafe_allow_html=True)
    
 
-elif stage == 4:
-    st.subheader("🚀 Mitigation Scenarios")
-    st.markdown("""
-        **1. Early Detection:** More warning = more safe options.  
-        **2. Deflection:** Kinetic impactor, gravity tractor, lasers.  
-        **3. Breaking/Destroying:** Nuclear option (risky).  
-        **4. Earth Protection:** Evacuation, shelters, cooperation.  
-        **5. Long-term Safety:** Investment in planetary defense.  
-    """)
+    elif stage == 4:
+        st.subheader("🚀 Mitigation Scenarios")
+        st.markdown("""
+            **1. Early Detection:** More warning = more safe options.  
+            **2. Deflection:** Kinetic impactor, gravity tractor, lasers.  
+            **3. Breaking/Destroying:** Nuclear option (risky).  
+            **4. Earth Protection:** Evacuation, shelters, cooperation.  
+            **5. Long-term Safety:** Investment in planetary defense.  
+        """)
 
 
 
