@@ -54,7 +54,15 @@ last_20_years = valid_years[-20:] if len(valid_years) >= 20 else valid_years
 # ----------------------
 # Tabs
 # ----------------------
-tab1, tab2, tab3, tab4 = st.tabs(["📊 Dashboard", "🎞️ Simulation", "🖼️ Gallery", "🌑 Asteroid Threat Simulation"])
+
+st.markdown("""
+    <div style="text-align: center; background-color:#0e1117; padding:15px; border-radius:10px;">
+        <h1 style="color:#FFFFFF;">Newterra</h1>
+    </div>
+""", unsafe_allow_html=True)
+
+
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["📊 Dashboard", "🎞️ Through the Years Simulation", "🖼️ Gallery", "🌑 Meteor Threat Simulation", "💫 Interesting Facts", "📌 References and Credits"])
 
 # ----------------------
 # Dashboard Tab
@@ -146,12 +154,19 @@ with tab3:
     image_urls = [
         "https://images-assets.nasa.gov/image/NHQ202508030001/NHQ202508030001~orig.jpg",
         "https://images-assets.nasa.gov/image/PIA05334/PIA05334~orig.jpg",
-        "https://images-assets.nasa.gov/image/PIA03212/PIA03212~orig.jpg"
+        "https://images-assets.nasa.gov/image/PIA03212/PIA03212~orig.jpg",
+        "https://d2pn8kiwq2w21t.cloudfront.net/original_images/didymos_scale.jpg"
     ]
 
     for url in image_urls:
         st.image(url, caption="NASA Meteorite Image", use_container_width=True)
+    
+    video_urls = [
+        "https://images-assets.nasa.gov/video/GSFC_20200227_M13565_Nightingale/GSFC_20200227_M13565_Nightingale~orig.mp4"
+    ]
 
+    for url in video_urls:
+        st.video(url)
 
 # ------------------------------
 # Asteroid Threat Simulation
@@ -160,7 +175,7 @@ with tab3:
 import folium
 from streamlit_folium import st_folium
 with tab4:
-    st.title("☄️ Hypothetical Asteroid Impact Simulation")
+    st.title("☄️ Warning: A Meteor Impactor 2025 is predicted to approach Earth!")
 
     # --- Stage slider ---
     stage = st.slider(
@@ -216,6 +231,7 @@ with tab4:
 
     # --- Stage-specific content ---
     if stage == 1:
+        st.image("https://miro.medium.com/v2/resize:fit:2000/1*dGMQXE65Igs6Q61hT_tK1w.jpeg")
         st.subheader("🔹 General Info")
         st.markdown("""
             - **Name:** Impactor-2025 (imaginary asteroid)  
@@ -223,8 +239,15 @@ with tab4:
             - **Density:** ~3,000 kg/m³  
             - **Shape:** Roughly spherical  
         """)
+        st.subheader("🔹 Solution")
+        st.markdown("""
+            **Early Detection:** Deflection missions like NASA's DART mission are planned for meteor's deflection        
+        """)
 
     elif stage == 2:
+
+        st.image("https://cdn.mos.cms.futurecdn.net/CL4ZHg7cZYNBnKBha8exaS.jpg.webp")
+
         st.subheader("🔹 Physical Properties")
         st.markdown("""
             - **Diameter:** 250 m  
@@ -232,8 +255,14 @@ with tab4:
             - **Volume:** ≈ 8.18 × 10⁶ m³  
             - **Mass:** ≈ 2.45 × 10¹⁰ kg  
         """)
+        st.subheader("🔹 Solution")
+        st.markdown("""
+            **Late Detection:** Impact location and time estimation, emegency alerts and evacuation of critical areas        
+        """)
 
     elif stage == 3:
+        st.image("https://scitechdaily.com/images/Asteroid-Strike-Animation.gif")
+
         st.subheader("🔹 Impact Energy & Effects")
 
         st.markdown("""
@@ -247,9 +276,16 @@ with tab4:
         <br><b>Earthquake equivalent:</b> Magnitude ~7.0  
         </div>
         """, unsafe_allow_html=True)
+        st.subheader("🔹 Solution")
+        st.markdown("""
+            **Explosion Scenerio:** Measurements of explosion's energy and shockwave impact, guiding emergency teams       
+        """)
    
 
     elif stage == 4:
+
+        st.image("https://astroedui18n-live-f4d80dfc7ba44a6283e91-64c3f57.divio-media.com/images/Crater.max-800x600.jpg")
+
         st.subheader("🚀 Mitigation Scenarios")
         st.markdown("""
             **1. Early Detection:** More warning = more safe options.  
@@ -258,8 +294,51 @@ with tab4:
             **4. Earth Protection:** Evacuation, shelters, cooperation.  
             **5. Long-term Safety:** Investment in planetary defense.  
         """)
+        st.subheader("🔹 Solution")
+        st.markdown("""
+            **Recovery Solutions:** Mapping affected areas using drones and satellites, information collection for future impact prediction       
+        """)
 
+# --------------------
+# Interesting Facts
+# --------------------
 
+with tab5:
+    st.title("Interesting Facts about Meteors")
+
+    st.markdown("""
+                **1. DART (Double Asteroid Redirection Test):** In 2022, NASA’s DART spacecraft deliberately crashed into the asteroid moonlet Dimorphos to test if a spacecraft could change an asteroid’s path. The impact successfully shortened its orbit, proving that kinetic impact can deflect a dangerous asteroid. This was the world’s first real planetary defense experiment.\n
+                **2. Hera Mission (ESA + NASA Collaboration):** After the DART mission, the European Space Agency launched Hera to study the impact site in detail. It will measure the crater, debris, and internal structure of Dimorphos. The mission helps scientists confirm how effective DART’s deflection really was.\n
+                **3. ATLAS (Asteroid Terrestrial-impact Last Alert System):** ATLAS is a network of robotic telescopes designed to find asteroids just days before they could hit Earth. It scans the sky every night and sends early warnings for possible impacts. This system helps protect people by giving evacuation time in case of late detection.\n
+                **4. Pan-STARRS and NEOWISE Surveys:** Pan-STARRS (on Earth) and NEOWISE (in space) continuously scan the sky to detect and track near-Earth asteroids. They collect data about asteroid size, orbit, and brightness. These missions are key tools NASA uses for early detection and monitoring of threats.\n
+                **5. LCROSS (Lunar Crater Observation and Sensing Satellite):** In 2009, NASA’s LCROSS mission intentionally crashed part of a rocket into a shadowed lunar crater to study the ejected material. Scientists discovered traces of water ice. Though it targeted the Moon, this controlled impact helped understand how crashes can reveal useful data — similar to meteor impact studies.\n
+                **6. Ames Vertical Gun Range (Lab Impact Simulation):** At NASA’s Ames Research Center, the Vertical Gun Range is used to fire small projectiles at high speed to simulate meteor impacts. Scientists study how craters form and how materials behave under extreme force. It helps in designing better spacecraft protection and impact prediction models.\n
+                **7. Chelyabinsk Meteor Study (2013):** In 2013, a large meteor exploded over Chelyabinsk, Russia. NASA and scientists worldwide analyzed satellite and seismic data from the event. The explosion helped researchers understand how airbursts form and how much damage such explosions can cause even without ground impact.\n
+    """)
+        
+# -------------------------
+# Referencing and Credits
+# -------------------------
+
+with tab6:
+    st.title("References and Credits")
+
+    st.subheader("References ")
+    st.markdown("""
+        - **Nasa's Meteor Dataset:** https://data.nasa.gov/docs/legacy/meteorite_landings/Meteorite_Landings.csv\n
+        - **Images URLs:** https://images-assets.nasa.gov/image/NHQ202508030001/NHQ202508030001~orig.jpg   https://images-assets.nasa.gov/image/PIA05334/PIA05334~orig.jpg   https://images-assets.nasa.gov/image/PIA03212/PIA03212~orig.jpg https://d2pn8kiwq2w21t.cloudfront.net/original_images/didymos_scale.jpg   https://miro.medium.com/v2/resize:fit:2000/1*dGMQXE65Igs6Q61hT_tK1w.jpeg   https://cdn.mos.cms.futurecdn.net/CL4ZHg7cZYNBnKBha8exaS.jpg.webp    https://scitechdaily.com/images/Asteroid-Strike-Animation.gif    https://astroedui18n-live-f4d80dfc7ba44a6283e91-64c3f57.divio-media.com/images/Crater.max-800x600.jpg\n
+        - **Videos URLs:** https://images-assets.nasa.gov/video/GSFC_20200227_M13565_Nightingale/GSFC_20200227_M13565_Nightingale~orig.mp4\n                            
+   """)
+
+    st.subheader("Team Credits")
+    st.markdown("""
+       - Manha Waheed (Research Work)
+       - Arzoo Mueen Nawaz (Research Work and ppt)
+       - Kashaf Arif (Research Work)
+       - Ayesha Zakaria (Research Work)
+       - Sulaiman Baloch (Research Work)
+       - Tooba Khalid (Web-app development)                                       
+    """)
 
 
 
