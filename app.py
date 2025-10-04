@@ -57,7 +57,7 @@ last_20_years = valid_years[-20:] if len(valid_years) >= 20 else valid_years
 
 st.markdown("""
     <div style="text-align: center; background-color:#0e1117; padding:15px; border-radius:10px;">
-        <h1 style="color:#FFFFFF;">Newterra</h1>
+        <h1 style="color:#FFFFFF;">NewTerra</h1>
     </div>
 """, unsafe_allow_html=True)
 
