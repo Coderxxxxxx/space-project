@@ -332,12 +332,12 @@ with tab6:
 
     st.subheader("Team Credits")
     st.markdown("""
-       - Manha Waheed (Research Work)
+       - Manha Waheed (Research Work, Web-App Development and Presenter)
        - Arzoo Mueen Nawaz (Research Work and ppt)
-       - Kashaf Arif (Research Work)
-       - Ayesha Zakaria (Research Work)
-       - Sulaiman Baloch (Research Work)
-       - Tooba Khalid (Web-app development)                                       
+       - Kashaf Arif (Research Work and Presenter)
+       - Ayesha Zakaria (Research Work and ppt)
+       - Sulaiman Baloch (Research Work and ppt)
+       - Tooba Khalid (Research Work and Web-App Development)                                       
     """)
 
 
